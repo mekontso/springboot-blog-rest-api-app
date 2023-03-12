@@ -1,34 +1,26 @@
-package com.springboot.blog.entity;
+package com.springboot.blog.payload;
 
-import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
 
 @Data // Add getters...
 @AllArgsConstructor  //
 @NoArgsConstructor
 @Entity
 @Table(name = "post")
-@RequiredArgsConstructor
-public class Post {
+public class PostDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "title", nullable = false, unique = true)
-    @NonNull
     private String title;
     @Column(name = "description", nullable = false)
-    @NonNull
     private String description;
     @Column(name = "content", nullable = false)
-    @NonNull
     private String content;
-    @CreationTimestamp
-    @Column(updatable = false)
-    private LocalDateTime createdAt;
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 }
